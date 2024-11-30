@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Notes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #app-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
+            transition: transform 0.3s;
+        }
+
+        #app-container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #d81b60;
+        }
+
+        #love-note {
+            font-size: 1.2em;
+            margin: 20px 0;
+            font-style: italic;
+            color: #333;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #d81b60;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #c2185b;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body>
+    <div id="app-container">
+        <h1>Love Notes</h1>
+        <p id="love-note">You are my favorite person, and I cherish every moment we share.</p>
+        <button id="generate-note">Generate Love Note</button>
+        <button id="copy-note">Copy Note</button>
+    </div>
+    <p style="font-size: 2em; margin-top: 20px; color: #d81b60;">
+
+    </p>Made with ❤️ by Oscar</p>
+    <script>
+        const loveNotes = [
+            "I love the way your eyes sparkle when you talk about something you love.",
+            "You are my best friend and my lover, and I cherish every moment we spend together.",
+            "You are the most amazing person I know, and I'm so lucky to have you in my life.",
+            "I love you not only for who you are but for who I am when I am with you.",
+            "I can't imagine my life without you. You make me so happy.",
+            "You are my favorite person, and I cherish every moment we share.",
+            "Your love is the greatest gift I could ever ask for.",
+            "I am so grateful for your love, support, and the joy you bring into my life.",
+            "You are my forever and always, and I love you more than words can say."
+        ];
+
+        const loveNoteElement = document.getElementById("love-note");
+        const generateNoteButton = document.getElementById("generate-note");
+        const copyNoteButton = document.getElementById("copy-note");
+
+        function generateLoveNote() {
+            const randomIndex = Math.floor(Math.random() * loveNotes.length);
+            loveNoteElement.textContent = loveNotes[randomIndex];
+        }
+
+        function copyLoveNote() {
+            const noteText = loveNoteElement.textContent;
+            navigator.clipboard.writeText(noteText).then(() => {
+                alert("Love note copied to clipboard!");
+            });
+        }
+
+        generateNoteButton.addEventListener("click", generateLoveNote);
+        copyNoteButton.addEventListener("click", copyLoveNote);
+
+        generateLoveNote();
+    </script>
+</body>
+</html>
